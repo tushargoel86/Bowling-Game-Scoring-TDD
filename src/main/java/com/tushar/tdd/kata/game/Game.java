@@ -4,7 +4,7 @@ public class Game {
     int sum = 0;
 
     public void run(int ballsKnockdown) {
-        this.sum = ballsKnockdown;
+        this.sum = this.sum + ballsKnockdown;
     }
 
     public int score() {

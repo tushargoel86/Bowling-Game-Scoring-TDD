@@ -15,6 +15,19 @@ public class GameTest {
 
         int score = game.score();
 
-        assertEquals(score, 2);
+        assertEquals(2, score);
+    }
+
+    @Test
+    @DisplayName("Should have sum equals to 10, when 8 balls are knockdonw in 2nd attmept and" +
+            " 2 in first attempt")
+    void testForSumEqualsToPreviousAttemptAndCurrentAttempt() {
+        Game game = new Game();
+        game.run(2);
+        game.run(8);
+
+        int score = game.score();
+
+        assertEquals(10, score);
     }
 }
