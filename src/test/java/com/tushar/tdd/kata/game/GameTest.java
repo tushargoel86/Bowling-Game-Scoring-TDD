@@ -30,4 +30,6 @@ public class GameTest {
 
         assertEquals(10, score);
     }
+
+
 }

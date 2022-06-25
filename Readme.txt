@@ -37,10 +37,11 @@ Test cases:
 3. If 10 balls are knockdown in single run in frame 1 then new frame should be 2
 4. If 10 balls are knockdown  in 2 run in frame 2 then new frame should be 3
 5. If in 2 attempts, 10 balls are not knockdown, then move to next frame and reset attempt counter
-6. If 8 ball is knockdown in 2 attempts in frame 3 then total sum is increased by 8
-7. In case of spare in frame 3, and frame 4, fist attempt 5 balls are knockdown
+6. In a frame not more than 10 balls can be knockdown
+7. If 8 ball is knockdown in 2 attempts in frame 3 then total sum is increased by 8
+8. In case of spare in frame 3, and frame 4, fist attempt 5 balls are knockdown
  then sum should increase the sum by 15
-8.In case of strike in frame 3, and frame 4, 10 balls are knockdown
+9.In case of strike in frame 3, and frame 4, 10 balls are knockdown
   then sum should increase the sum by 20
-9. In 10th frame, 2nd attempt strike is hit then 3rd attempt user knockdown 5 then total sum increase by 15
+10. In 10th frame, 2nd attempt strike is hit then 3rd attempt user knockdown 5 then total sum increase by 15
  for that frame
