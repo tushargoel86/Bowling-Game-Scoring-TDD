@@ -15,7 +15,7 @@ public class Frame {
     public void run(int ballsKnockdown) {
         if (ballsKnockdown > TOTAL_BALLS
                 || (totalBallsKnocksDown + ballsKnockdown) > TOTAL_BALLS)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Total number of balls in a frame can't be greater than 10");
         totalBallsKnocksDown += ballsKnockdown;
         ballsPerAttempt.add(ballsKnockdown);
     }

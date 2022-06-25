@@ -35,12 +35,20 @@ public class FrameTest {
         validateFrame(9, -1);
     }
 
+    @Test
+    @DisplayName("Should show correct error message when number of balls are more")
+    void testForCorrectErrorMessage() {
+        frame.run(2);
+        validateFrame(9, -1);
+    }
+
     void validateFrame(int balls, int result) {
         try {
             frame.run(balls);
             assertEquals(result, frame.size());
         } catch (IllegalArgumentException e) {
-            assertTrue(true);
+            assertEquals("Total number of balls in a frame can't be greater than 10",
+                    e.getMessage());
         }
     }
 }
