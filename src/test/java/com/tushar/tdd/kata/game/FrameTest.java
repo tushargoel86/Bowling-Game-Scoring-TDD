@@ -12,7 +12,7 @@ public class FrameTest {
     private Frame previous;
 
     @BeforeEach
-    private void setup() {
+    void setup() {
         previous = new Frame(2);
         frame = new Frame(2, previous) ;
     }
@@ -71,10 +71,19 @@ public class FrameTest {
     void testForStrike() {
         previous.run(6);
         previous.run(4);
-
-        assertEquals(6, 4, 10);
+        assertEquals(10, previous.sum());
         frame.run(6);
         assertEquals(16, previous.sum());
+    }
+
+    @Test
+    @DisplayName("Should show sum equals to 30 when strike is hit and next frame hit 10 balls")
+    void testForSpare() {
+        previous.run(10);
+        assertEquals(10, previous.sum());
+        frame.run(1);
+        frame.run(9);
+        assertEquals(20, previous.sum());
     }
 
     void validateSum(int ball1, int ball2, int result) {

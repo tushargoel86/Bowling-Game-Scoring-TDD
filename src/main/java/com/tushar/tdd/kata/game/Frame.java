@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Frame {
     public static final int FIRST_ATTEMPT = 1;
+    public static final int SECOND_ATTEMPT = 2;
     private final List<Integer> ballsPerAttempt;
     public static final int TOTAL_BALLS = 10;
     private int totalBallsKnocksDown = 0;
@@ -24,8 +25,8 @@ public class Frame {
         validateMove(ballsKnockdown);
         totalBallsKnocksDown += ballsKnockdown;
         ballsPerAttempt.add(ballsKnockdown);
-        sum += totalBallsKnocksDown;
-        updateBonusOfPreviousFrame();
+        sum += ballsKnockdown;
+        updateBonusOfPreviousFrame(ballsKnockdown);
     }
 
     private void validateMove(int ballsKnockdown) {
@@ -34,10 +35,12 @@ public class Frame {
             throw new IllegalArgumentException("Total number of balls in a frame can't be greater than 10");
     }
 
-    private void updateBonusOfPreviousFrame() {
-        if (ballsPerAttempt.size() == FIRST_ATTEMPT && previousFrame != null
-                && previousFrame.sum() == TOTAL_BALLS) {
-            previousFrame.addBonus(ballsPerAttempt.get(FIRST_ATTEMPT));
+    private void updateBonusOfPreviousFrame(int balls) {
+        if (previousFrame == null) return;
+        if (previousFrame.getType().equals(FrameType.STRIKE)) {
+            previousFrame.addBonus(balls);
+        } else if (previousFrame.getType().equals(FrameType.SPARE)) {
+            previousFrame.addBonus(balls);
         }
     }
 
@@ -51,5 +54,15 @@ public class Frame {
 
     public int sum() {
         return sum;
+    }
+
+    private FrameType getType() {
+        if (totalBallsKnocksDown != 10) return FrameType.NONE;
+        if (ballsPerAttempt.size() == 2) {
+            return FrameType.STRIKE;
+        } else {
+            return FrameType.SPARE;
+        }
+
     }
 }
