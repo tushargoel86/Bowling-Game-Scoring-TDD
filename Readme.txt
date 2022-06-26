@@ -47,3 +47,14 @@ Test cases:
   then sum should increase the sum by 20
 10. In 10th frame, 2nd attempt strike is hit then 3rd attempt user knockdown 5 then total sum increase by 15
  for that frame
+
+After test 2, I realised that I can't move forward without having Frame class defined. So writing a few
+test cases for it before moving ahead.
+
+1. If in a frame during first attempt 10 balls are knockdown then no more try should be done
+2. In case number of balls are more than 10 in frame then throw exception
+3. Should return frame sum to 10 when 10 balls knock down in 2 attempts
+4. In case sum is called before any frame order then exception should be thrown
+5. If strike is hit then sum of that frame is 10 + balls knock down in next frame first attempt
+6. If spare is hit then sum of that frame is 10 + balls knock down in next frame 2 attempts
+7. Sum of this frame is this frame sum plus previous frame sum, previous sum is 0 for first frame
