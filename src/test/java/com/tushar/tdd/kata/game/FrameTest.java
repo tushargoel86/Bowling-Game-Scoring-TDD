@@ -9,10 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FrameTest {
 
     private Frame frame;
+    private Frame previous;
 
     @BeforeEach
     private void setup() {
-        frame = new Frame(2);
+        previous = new Frame(2);
+        frame = new Frame(2, previous) ;
     }
 
     @Test
@@ -24,27 +26,27 @@ public class FrameTest {
     @Test
     @DisplayName("Should store 2 attempts when balls are not knockdown in first attempt")
     void testForTwoAttempts() {
-        frame.run(2, null);
+        frame.run(2);
         validateFrame(5, 2);
     }
 
     @Test
     @DisplayName("Total number of balls should not be greater than 10 in 2 attempts")
     void testForBallsValidation() {
-        frame.run(2, null);
+        frame.run(2);
         validateFrame(9, -1);
     }
 
     @Test
     @DisplayName("Should show correct error message when number of balls are more")
     void testForCorrectErrorMessage() {
-        frame.run(2, null);
+        frame.run(2);
         validateFrame(9, -1);
     }
 
     void validateFrame(int balls, int result) {
         try {
-            frame.run(balls, frame);
+            frame.run(balls);
             assertEquals(result, frame.size());
         } catch (IllegalArgumentException e) {
             assertEquals("Total number of balls in a frame can't be greater than 10",
@@ -65,26 +67,19 @@ public class FrameTest {
     }
 
     @Test
-    @DisplayName("Should throw exception in case still frame is not reached")
-    void testForFrameSumForValidOne() {
-       assertThrows(IllegalArgumentException.class, () -> frame.sum());
-    }
-
-    @Test
     @DisplayName("Should show sum equals to 16 when strike is hit and next attempt has 6 balls")
     void testForStrike() {
-        frame.run(6, frame);
-        frame.run(4, frame);
+        previous.run(6);
+        previous.run(4);
 
-        Frame frame2 = new Frame(2);
-        frame2.run(6, frame);
-
-        assertEquals(16, frame.sum());
+        assertEquals(6, 4, 10);
+        frame.run(6);
+        assertEquals(16, previous.sum());
     }
 
     void validateSum(int ball1, int ball2, int result) {
-        frame.run(ball1, null);
-        frame.run(ball2, null);
+        frame.run(ball1);
+        frame.run(ball2);
 
         assertEquals(ball1 + ball2, result);
     }
