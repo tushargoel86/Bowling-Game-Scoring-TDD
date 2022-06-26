@@ -51,4 +51,29 @@ public class FrameTest {
                     e.getMessage());
         }
     }
+
+    @Test
+    @DisplayName("Should show sum equals to 2 when 2 balls knockdown")
+    void shouldHaveFrameSumEqualsToBallsKnockDown() {
+       validateSum(2, 8, 10);
+    }
+
+    @Test
+    @DisplayName("Should show sum equals to 6 when 6 balls knockdown")
+    void shouldHaveFrameCountEqualsToBallsKnockDown() {
+      validateSum(1, 5, 6);
+    }
+
+    @Test
+    @DisplayName("Should throw exception in case still frame is not reached")
+    void testForFrameSumForValidOne() {
+       assertThrows(IllegalArgumentException.class, () -> frame.sum());
+    }
+
+    void validateSum(int ball1, int ball2, int result) {
+        frame.run(ball1);
+        frame.run(ball2);
+
+        assertEquals(ball1 + ball2, result);
+    }
 }

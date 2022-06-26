@@ -23,4 +23,9 @@ public class Frame {
     public int size() {
        return ballsPerAttempt.size();
     }
+
+    public int sum() {
+        if (ballsPerAttempt.size() == 0) throw new IllegalArgumentException();
+        return ballsPerAttempt.stream().reduce(Integer::sum).orElse(-1);
+    }
 }
