@@ -26,7 +26,7 @@ public class Frame {
         totalBallsKnocksDown += ballsKnockdown;
         ballsPerAttempt.add(ballsKnockdown);
         sum += ballsKnockdown;
-        updateBonusOfPreviousFrame(ballsKnockdown);
+        updateBonusOfPreviousFrame();
     }
 
     private void validateMove(int ballsKnockdown) {
@@ -35,12 +35,12 @@ public class Frame {
             throw new IllegalArgumentException("Total number of balls in a frame can't be greater than 10");
     }
 
-    private void updateBonusOfPreviousFrame(int balls) {
+    private void updateBonusOfPreviousFrame() {
         if (previousFrame == null) return;
-        if (previousFrame.getType().equals(FrameType.STRIKE)) {
-            previousFrame.addBonus(balls);
-        } else if (previousFrame.getType().equals(FrameType.SPARE)) {
-            previousFrame.addBonus(balls);
+        if (ballsPerAttempt.size() == 1 && previousFrame.getType().equals(FrameType.STRIKE)) {
+            previousFrame.addBonus(ballsPerAttempt.get(0));
+        } else if (ballsPerAttempt.size() == 2 && previousFrame.getType().equals(FrameType.SPARE)) {
+            previousFrame.addBonus(totalBallsKnocksDown);
         }
     }
 
@@ -56,13 +56,16 @@ public class Frame {
         return sum;
     }
 
-    private FrameType getType() {
+    public FrameType getType() {
         if (totalBallsKnocksDown != 10) return FrameType.NONE;
         if (ballsPerAttempt.size() == 2) {
             return FrameType.STRIKE;
         } else {
             return FrameType.SPARE;
         }
+    }
 
+    public boolean isFrameCompleted() {
+        return totalBallsKnocksDown == 10 || ballsPerAttempt.size() == 2;
     }
 }

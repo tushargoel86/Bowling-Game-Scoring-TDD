@@ -8,26 +8,43 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GameTest {
 
     @Test
-    @DisplayName("Should have sum equals to number of balls knockdown")
-    void testForSumEqualsToBallsKnockdown() {
-        Game game = new Game();
-        game.run(2);
-
-        int score = game.score();
-
-        assertEquals(2, score);
-    }
-
-    @Test
-    @DisplayName("Should have sum equals to 10, when 8 balls are knockdonw in 2nd attmept and" +
-            " 2 in first attempt")
-    void testForSumEqualsToPreviousAttemptAndCurrentAttempt() {
+    @DisplayName("Should show correct sum for strike")
+    void testForStrike() {
         Game game = new Game();
         game.run(2);
         game.run(8);
+        game.run(8);
+        game.run(1);
 
         int score = game.score();
 
-        assertEquals(10, score);
+        assertEquals(27, score);
+    }
+
+
+    @Test
+    @DisplayName("Should sum the previous sum with the frame sum")
+    void testForFrameWithPreviousSum() {
+        Game game = new Game();
+        game.run(4);
+        game.run(4);
+        game.run(5);
+
+        int score = game.score();
+
+        assertEquals(13, score);
+    }
+
+    @Test
+    @DisplayName("Should sum for the spare")
+    void testForSpare() {
+        Game game = new Game();
+        game.run(10);
+        game.run(4);
+        game.run(5);
+
+        int score = game.score();
+
+        assertEquals(28, score);
     }
 }
