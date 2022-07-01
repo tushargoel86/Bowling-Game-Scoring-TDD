@@ -6,15 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FrameTest {
-
-    private Frame frame;
-    private Frame previous;
+public class IntermediateFrameTest {
+    private BaseFrame frame;
+    private BaseFrame previous;
 
     @BeforeEach
     void setup() {
-        previous = new Frame(2);
-        frame = new Frame(2, previous) ;
+        previous = new IntermediateFrame(2);
+        frame = new IntermediateFrame(2, previous) ;
     }
 
     @Test
