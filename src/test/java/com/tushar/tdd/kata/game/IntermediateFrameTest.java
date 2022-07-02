@@ -12,8 +12,9 @@ public class IntermediateFrameTest {
 
     @BeforeEach
     void setup() {
-        previous = new IntermediateFrame(2);
-        frame = new IntermediateFrame(2, previous) ;
+        previous = new IntermediateFrame();
+        frame = new IntermediateFrame() ;
+        frame.setPreviousFrame(previous);
     }
 
     @Test

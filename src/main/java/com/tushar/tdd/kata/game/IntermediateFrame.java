@@ -1,12 +1,8 @@
 package com.tushar.tdd.kata.game;
 
 public class IntermediateFrame extends BaseFrame {
-    public IntermediateFrame(int capacity) {
-       super(capacity);
-    }
-
-    public IntermediateFrame(int capacity, BaseFrame previousFrame) {
-       super(capacity, previousFrame);
+    public IntermediateFrame() {
+       super(2);
     }
 
     public void validateMove(int ballsKnockdown) {

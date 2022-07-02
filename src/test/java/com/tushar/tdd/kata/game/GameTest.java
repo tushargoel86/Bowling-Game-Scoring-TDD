@@ -21,7 +21,6 @@ public class GameTest {
         testForValidScore(27, 2,8, 8, 1);
     }
 
-
     @Test
     @DisplayName("Should sum the previous sum with the frame sum")
     void testForFrameWithPreviousSum() {

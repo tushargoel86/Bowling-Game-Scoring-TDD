@@ -16,11 +16,6 @@ public abstract class BaseFrame {
         this.ballsPerAttempt = new ArrayList<>(capacity);
     }
 
-    public BaseFrame(int capacity, BaseFrame previousFrame) {
-        this.ballsPerAttempt = new ArrayList<>(capacity);
-        this.previousFrame = previousFrame;
-    }
-
     protected void addBonus(int bonus) {
         this.sum += bonus;
     }
@@ -75,5 +70,9 @@ public abstract class BaseFrame {
 
     protected int totalBallsKnockDown() {
         return totalBallsKnocksDown;
+    }
+
+    public void setPreviousFrame(BaseFrame frame) {
+        this.previousFrame = frame;
     }
 }

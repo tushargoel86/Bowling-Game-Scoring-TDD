@@ -2,17 +2,20 @@ package com.tushar.tdd.kata.game;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Game {
     private final List<BaseFrame> frames;
     int currentFrame = 0;
 
     public Game() {
-        frames = new ArrayList<>(10);
-        frames.add(new IntermediateFrame(2));
-        IntStream.range(1, 10).mapToObj(i -> new IntermediateFrame(2, frames.get(i - 1)))
-                .forEach(frames::add);
+        frames = new ArrayList<>();
+        BaseFrame prev = null;
+        for (int i = 0; i < 9; i++) {
+            BaseFrame frame = new IntermediateFrame();
+            frame.setPreviousFrame(prev);
+            prev = frame;
+            frames.add(frame);
+        }
     }
 
     public void run(int ballsKnockdown) {
