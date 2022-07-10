@@ -37,7 +37,8 @@ public abstract class BaseFrame {
     }
 
     public boolean isFrameCompleted() {
-        return totalBallsKnocksDown == TOTAL_BALLS || ballsPerAttempt.size() == 2;
+        return totalBallsKnocksDown == TOTAL_BALLS
+                || ballsPerAttempt.size() == SECOND_ATTEMPT;
     }
 
     protected int numberOfAttempts() {
