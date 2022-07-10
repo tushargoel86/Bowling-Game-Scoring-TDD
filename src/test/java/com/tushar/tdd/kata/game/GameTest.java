@@ -33,6 +33,16 @@ public class GameTest {
         testForValidScore(28, 10, 4, 5);
     }
 
+    @Test
+    void testForFinalFrameWithoutAnyStrikeAndSpare() {
+
+    }
+
+    @Test
+    void testForTwoBackToBackSpare() {
+        testForValidScore(38, 10, 10,2, 2);
+    }
+
     void testForValidScore(int target, int... attempts) {
         for (int attempt : attempts) {
             game.run(attempt);

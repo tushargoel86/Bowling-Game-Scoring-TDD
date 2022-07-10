@@ -57,6 +57,9 @@ public abstract class BaseFrame {
             previousFrame.addBonus(balls);
         } else if (numberOfAttempts() == SECOND_ATTEMPT && previousFrame.isSpare()) {
             previousFrame.addBonus(balls);
+        } else if (numberOfAttempts() == FIRST_ATTEMPT && previousFrame.isSpare()
+                && totalBallsKnocksDown == TOTAL_BALLS) {
+            previousFrame.addBonus(balls);
         }
     }
 
