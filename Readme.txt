@@ -1,4 +1,4 @@
-(Inprogress...)
+Please check commits. I have tried to do smaller commits to explain thought process.
 
 Scoring Bowling Game:
 
@@ -58,3 +58,5 @@ test cases for it before moving ahead.
 5. If strike is hit then sum of that frame is 10 + balls knock down in next frame first attempt
 6. If spare is hit then sum of that frame is 10 + balls knock down in next frame 2 attempts
 7. Sum of this frame is this frame sum plus previous frame sum, previous sum is 0 for first frame
+
+I have added some extra test cases for 10th (Final frame). Those are not mentioning here.
