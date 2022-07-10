@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FinalFrameTest {
 
@@ -23,9 +24,10 @@ public class FinalFrameTest {
     }
 
     @Test
-    @DisplayName("Should return sum of three attempts")
+    @DisplayName("Should return sum of three attempts in case of strike or spare")
     void testSumWhenSpareHit() {
-       assertingForEqualValue(30, () -> frame.sum(), 10, 7, 3);
+       assertingForEqualValue(20, () -> frame.sum(), 10, 7, 3);
+       assertingForEqualValue(16, () -> frame.sum(), 3, 7, 3);
     }
 
     @Test
@@ -45,13 +47,13 @@ public class FinalFrameTest {
         }
     }
 
-//    @Test
-//    @DisplayName("Should not allow third attempt when not strike and spare")
-//    void testForInvalidAttemptWhenNotStrikeOrSpare() {
-//        FinalFrame frame = new FinalFrame();
-//        frame.run(2);
-//        frame.run(7);
-//
-//        assertThrows(IllegalArgumentException.class, () ->  frame.run(3));
-//    }
+    @Test
+    @DisplayName("Should not allow third attempt when not strike and spare")
+    void testForInvalidAttemptWhenNotStrikeOrSpare() {
+        FinalFrame frame = new FinalFrame();
+        frame.run(2);
+        frame.run(7);
+
+        assertThrows(IllegalArgumentException.class, () ->  frame.run(3));
+    }
 }

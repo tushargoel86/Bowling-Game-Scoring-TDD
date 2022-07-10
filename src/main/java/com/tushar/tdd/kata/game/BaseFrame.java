@@ -48,6 +48,9 @@ public abstract class BaseFrame {
         ballsPerAttempt.add(ballsKnockdown);
     }
 
+    public List<Integer> getBallsPerAttempt() {
+        return ballsPerAttempt;
+    }
 
     protected abstract void validateMove(int ballsKnockdown);
 

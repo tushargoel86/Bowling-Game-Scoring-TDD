@@ -16,6 +16,9 @@ public class Game {
             prev = frame;
             frames.add(frame);
         }
+        FinalFrame frame = new FinalFrame();
+        frame.setPreviousFrame(prev);
+        frames.add(frame);
     }
 
     public void run(int ballsKnockdown) {

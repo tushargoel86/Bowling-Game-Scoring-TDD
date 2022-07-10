@@ -35,7 +35,14 @@ public class GameTest {
 
     @Test
     void testForFinalFrameWithoutAnyStrikeAndSpare() {
+        testForValidScore(79, 10, 4, 5, 3, 3, 2, 1, 4, 2, 4, 2, 4, 2, 3, 3, 9, 0,
+                9, 0);
+    }
 
+    @Test
+    void testForFinalFrameWithAnyStrikeOrSpare() {
+        testForValidScore(82, 10, 4, 5, 3, 3, 2, 1, 4, 2, 4, 2, 4, 2, 3, 3, 9, 0,
+                9, 1, 2);
     }
 
     @Test
